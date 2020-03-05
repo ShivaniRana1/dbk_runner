@@ -200,6 +200,17 @@ void keyboardEvent(char key, int xm, int ym){
   {
       x=x+1.0;
   }
+
+
+if(x>1.0){
+      x = 1.0;
+    }else if(x < -1.0){
+      x = -1.0;
+    }else{
+      //
+    }
+
+
 }
 
 int main(int argc, char** argv)
