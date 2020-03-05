@@ -1,6 +1,9 @@
 #include<GL/glut.h>
 #define GL_SILENCE_DEPRECATION  1
 GLfloat x,y,z;
+int _h,_w;
+float ballx,ballz;
+float camz;
 
 void init()
 {
@@ -127,11 +130,13 @@ void drawObstacleBlock()
 
 void drawSphere()
 {
+  ballx=0.0+x;
+  ballz=-1.5f+z;
  glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glPushMatrix();
-    glColor3f(1.0f, 0.0f, 1.0f); 
-    glTranslatef(0.0f +x,0.5f+y,-1.5f+z);
+    glColor3f(1.0f, 1.0f, 0.0f); 
+    glTranslatef(ballx,0.5f,ballz);
    	glutSolidSphere(.5, 50,50);
     glPopMatrix();
 }
@@ -162,15 +167,17 @@ void gradientBackground() // call this function and make bring this to the backg
 
 void render()
 {
+
+camz=z-5.5;
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(70.0f, 1.77f, 0.1f, 1000.0f);
+  gluPerspective(70.0f, ((GLdouble)_w/_h), 0.1f, 1000.0f);
 
-  gluLookAt(0.0,3.0,z-5.5,0.0,0.0,z,0.0,1.0,0.0);
+  gluLookAt(0.0,3.0,camz,0.0,0.0,z,0.0,1.0,0.0);
   drawRoad(1000);
   drawObstacleBlock();
   drawSphere();
@@ -215,9 +222,11 @@ if(x>1.0){
 
 int main(int argc, char** argv)
 {
+  _h=1080;
+  _w=1920;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-  glutInitWindowSize(1920, 1080);
+  glutInitWindowSize(_w, _h);
   glutCreateWindow("DBK Runner");
   glutReshapeFunc(reshape);       // Register callback handler for window re-size event
   glutSpecialFunc(keyboardEvent);
