@@ -58,10 +58,10 @@ void render()
   drawRoad(1000);
   drawObstacleBlock();
   drawSphere();
-  drawFood();
+  drawFood(10);
   glFlush();
   glutTimerFunc(1500,moveBall,0);
-  glutTimerFunc(1500,rotateFood,0);
+    glutTimerFunc(2500,rotateFood,0);
 
   glutPostRedisplay();
   glutSwapBuffers();  

@@ -1,5 +1,7 @@
-float ballx=0.0;
-float ballz=-1.5f;
+#ifndef VARIABLES_H
+  #define VARIABLES_H
+  #include"variables.h"
+#endif
 
 void moveBall()
 {

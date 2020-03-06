@@ -1,3 +1,8 @@
+#ifndef VARIABLES_H
+  #define VARIABLES_H
+  #include"variables.h"
+
+#endif
 void drawRoadSegment(int* roadPos)
 {
   glPushMatrix();
@@ -36,6 +41,7 @@ void drawRoadSegment(int* roadPos)
 
 void drawRoad(int length)
 {
+    roadLength = length * 2;
   GLint roadPos=0;
   int i =0;
   while(i < length){

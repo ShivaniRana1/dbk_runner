@@ -1,3 +1,8 @@
+#ifndef VARIABLES_H
+  #define VARIABLES_H
+  #include"variables.h"
+
+#endif
 
 void drawObstacleBlock()
 {
