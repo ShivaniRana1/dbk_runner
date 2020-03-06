@@ -56,7 +56,7 @@ void render()
 
   gluLookAt(0.0,3.0,camz,0.0,0.0,ballz,0.0,1.0,0.0);
   drawRoad(1000);
-  drawObstacleBlock();
+  drawObstacleBlock(10);
   drawSphere();
   drawFood(10);
   glFlush();

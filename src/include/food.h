@@ -6,10 +6,12 @@
 float foodMat[200][2];
 int isInitialized =0;
 void initFood(){
+   
     foodMat[0][0] = 0; // initializing the matrix so that it can be checked below if the value has been placed or not
-
+ 
     float zLocation;
     float xLocation;
+   
 
     for(int i =0; i < 200; i++){
         zLocation = rand() % roadLength;
@@ -19,6 +21,8 @@ void initFood(){
         foodMat[i][1] = zLocation;
     }
     isInitialized =1;
+    
+    
 
 }
 void drawFood(int number){

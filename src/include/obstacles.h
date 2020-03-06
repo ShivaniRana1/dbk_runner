@@ -4,11 +4,39 @@
 
 #endif
 
-void drawObstacleBlock()
+float obsMat[200][2];
+int isInit=0;
+
+void initobs(){
+   
+   // foodMat[0][0] = 0; // initializing the matrix so that it can be checked below if the value has been placed or not
+ 
+    float zLocation;
+    float xLocation;
+   
+
+    for(int i =0; i < 200; i++){
+        zLocation = rand() % roadLength;
+        xLocation = (rand() % 3) -1;
+
+        obsMat[i][0] = xLocation;
+        obsMat[i][1] = zLocation;
+    }
+    isInit =1;
+    
+    
+
+}
+
+void drawObstacleBlock(int number)
 {
-  
+
+  if(!isInit){
+        initobs();
+    }
+  for(int i =0; i < 20; i++){
   glPushMatrix();
-  glTranslatef(0.0f, 0.0f, 10.0f);
+   glTranslatef(obsMat[i][0] ,1.0,obsMat[i][1]);
 
   glBegin(GL_POLYGON);
   glVertex3f( -0.5, -0.5, -0.5);       // P1
@@ -63,5 +91,6 @@ void drawObstacleBlock()
   glEnd();
   
   glPopMatrix();
+  }
 }
 
