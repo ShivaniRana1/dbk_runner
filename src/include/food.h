@@ -52,6 +52,7 @@ void foodCollision(){
         if((int)ballx == (int)foodMat[i][0] && (int)ballz == (int)foodMat[i][1]){
             //printf("Food collision at: (%f,%f)\n",ballx,ballz);
             totalPoints++;
+            foodMat[i][1]=0;
           if(ballz<roadLength){
           glLoadIdentity();
     glTranslatef(-3, 0.5, ballz);

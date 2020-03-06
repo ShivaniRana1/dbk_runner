@@ -93,9 +93,10 @@ void drawObstacleBlock(int number)
 
 void obstacleCollision(){
     for(int i =0; i < 20; i++){
-        if((int)ballx == (int)obsMat[i][0] && (int)ballz == (int)obsMat[i][1]){
+        if(ceilf(ballx) == ceilf(obsMat[i][0]) && ceilf(ballz) == ceilf(obsMat[i][1])){
             printf("Obstacle collision at: (%f,%f)\n",ballx,ballz);
             totalPoints--;
+            obsMat[i][1]=0;
         }
     }
 }
