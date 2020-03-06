@@ -1,3 +1,6 @@
+
+#include<GL/glut.h>
+
 #ifndef VARIABLES_H
   #define VARIABLES_H
   #include"variables.h"
@@ -49,6 +52,18 @@ void foodCollision(){
         if((int)ballx == (int)foodMat[i][0] && (int)ballz == (int)foodMat[i][1]){
             //printf("Food collision at: (%f,%f)\n",ballx,ballz);
             totalPoints++;
+          if(ballz<roadLength){
+          glLoadIdentity();
+    glTranslatef(-3, 0.5, ballz);
+        int num = totalPoints;
+            char text[10]={'\0'};
+                sprintf(text, "%d", num); //%d is for integers 
+                    glColor3f(0.0, 0.0, 0.0);
+                         glRasterPos3f( 0.3 , 3.0 , ballz);
+                                for(int i = 0; text[i] != '\0'; i++)
+                                     glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);   
+                                   
+          }
         }
     }
 }

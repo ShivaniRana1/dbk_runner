@@ -16,3 +16,6 @@ float angleFood =0.0;
 // Variables of Road
 int roadLength;
 
+//variables to show text in Graphics Window
+float xrot = -1.0, yrot = 0.50, zoom = 2.0;
+
