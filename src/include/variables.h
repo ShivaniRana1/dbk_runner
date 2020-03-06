@@ -7,3 +7,6 @@ float angleFood =0.0;
 
 // Variables of Road
 int roadLength;
+
+// Variables of game play
+int totalPoints =0;

@@ -5,9 +5,8 @@
 
 float foodMat[200][2];
 int isInitialized =0;
-void initFood(){
-    foodMat[0][0] = 0; // initializing the matrix so that it can be checked below if the value has been placed or not
 
+void initFood(){
     float zLocation;
     float xLocation;
 
@@ -19,8 +18,8 @@ void initFood(){
         foodMat[i][1] = zLocation;
     }
     isInitialized =1;
-
 }
+
 void drawFood(int number){
     if(!isInitialized){
         initFood();
@@ -41,4 +40,15 @@ void drawFood(int number){
 void rotateFood(){
     angleFood += 5.0;
     //printf("%f\n",angleFood);
+}
+
+void foodCollision(){
+    for(int i =0; i < 20; i++){
+        if((int)ballx == (int)foodMat[i][0] && (int)ballz == (int)foodMat[i][1]){
+            //printf("Collision at: (%f,%f)\n",ballx,ballz);
+            totalPoints++;
+        }
+    }
+    //printf("Ball at: (%f,%f)",ballx,ballz);
+   // printf("\t| (%f,%f)\n",foodMat[10][0],foodMat[10][1]);
 }

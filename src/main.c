@@ -1,5 +1,11 @@
 #include<GL/glut.h>
-#include"food.h"
+
+
+#ifndef FOOD_H
+  #include"food.h"
+  #define FOOD_H
+#endif
+
 #include"road.h"
 #include"obstacles.h"
 #include"ball.h"
@@ -59,6 +65,7 @@ void render()
   drawObstacleBlock();
   drawSphere();
   drawFood(10);
+  feelCollision();
   glFlush();
   glutTimerFunc(1500,moveBall,0);
     glutTimerFunc(2500,rotateFood,0);
