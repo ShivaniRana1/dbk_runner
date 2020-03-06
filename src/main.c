@@ -1,5 +1,5 @@
 #include<GL/glut.h>
-#include"points.h"
+#include"food.h"
 #include"road.h"
 #include"obstacles.h"
 #include"ball.h"
@@ -58,8 +58,10 @@ void render()
   drawRoad(1000);
   drawObstacleBlock();
   drawSphere();
+  drawFood();
   glFlush();
   glutTimerFunc(1500,moveBall,0);
+  glutTimerFunc(1500,rotateFood,0);
 
   glutPostRedisplay();
   glutSwapBuffers();  
