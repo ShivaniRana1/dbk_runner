@@ -3,6 +3,7 @@
   #include"variables.h"
 
 #endif
+
 void drawRoadSegment(int* roadPos)
 {
   glPushMatrix();
