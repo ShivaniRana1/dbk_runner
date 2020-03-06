@@ -61,3 +61,20 @@ void feelCollision(){
   foodCollision();
   obstacleCollision();
 }
+
+void dis()
+{
+   glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glPushMatrix();
+  if(ballz>roadLength){
+    ballz=0.0;
+
+   
+    glColor3f(1.0f, 1.0f, 0.0f); 
+    glTranslatef(ballx,0.5f,ballz);
+    glutSolidSphere(.4, 50,50);
+
+  }
+      glPopMatrix();
+}

@@ -20,6 +20,8 @@ GLfloat x,y,z;
 int _h,_w;
 float camz;
 
+void result();
+
 void init()
 {
   glClearColor(1.0f, 0.5f, 0.5f, 1.0f); 
@@ -43,27 +45,27 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Write the text before any transformation or rotation
     // Or the text will change its position with the models
 
-  if(ballz> roadLength*0.75){
+  if(ballz > roadLength*0.75){
+   
     char text4[32];
     sprintf(text4, "LEVEL 4", xrot, yrot);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 1.0);
     glRasterPos3f( 0.3 , 3.0 , ballz);
     for(int i = 0; text4[i] != '\0'; i++)
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, text4[i]);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text4[i]);
   }
-   if(ballz > roadLength*0.5){
+   else if(ballz > roadLength*0.5) {
     char text3[32];
     sprintf(text3, "LEVEL 3", xrot, yrot);
-    glColor3f(0.0, 0.0, 0.0);
-    glRasterPos3f( 0.3 , 3.0 , ballz);
+    glColor3f(0.0, 0.0, 1.0);
+    glRasterPos3f( 3.0 , 3.0 , ballz);
     for(int i = 0; text3[i] != '\0'; i++)
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text3[i]);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 ,text3[i]);
   }
-
-   if(ballz > roadLength*0.25){
+   else if(ballz> roadLength*0.25){
     char text2[32];
     sprintf(text2, "LEVEL 2", xrot, yrot);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 1.0);
     glRasterPos3f( 0.3 , 3.0 , ballz);
     for(int i = 0; text2[i] != '\0'; i++)
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text2[i]);
@@ -71,11 +73,13 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    else {
     char text[32];
     sprintf(text, "LEVEL 1", xrot, yrot);
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 1.0);
     glRasterPos3f( 3.0 , 3.0 , ballz);
     for(int i = 0; text[i] != '\0'; i++)
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 ,text[i]);
   }
+
+  
  
 }
 
@@ -106,6 +110,39 @@ void point()
                                    
           }
 }
+
+void result()
+{
+ 
+ glLoadIdentity();
+
+    glTranslatef(9.0, 0.5, ballz);
+  if(ballz>roadLength)
+  {
+    if(totalPoints<8)
+    {
+       char text[32];
+    sprintf(text, "YOU LOSE", xrot-4.0, yrot);
+    glColor3f(0.0, 0.0, 1.0);
+    //glRasterPos3f( 3.0 , 3.0 , ballz);
+    for(int i = 0; text[i] != '\0'; i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 ,text[i]);
+    }
+
+    if(totalPoints>8)
+    {
+        char text2[32];
+    sprintf(text2, "YOU WIN", xrot-4.0, yrot);
+    glColor3f(0.0, 0.0, 1.0);
+    //glRasterPos3f( 3.0 , 3.0 , ballz);
+    for(int i = 0; text2[i] != '\0'; i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18 ,text2[i]);
+    }
+  }
+}
+
+
+//idk what this function does
 
 void gradientBackground() // call this function and make bring this to the backgrounds
 {
@@ -149,12 +186,13 @@ void render()
   gluPerspective(70.0f, ((GLdouble)_w/_h), 0.1f, 1000.0f);
 
   gluLookAt(0.0,3.0,camz,0.0,0.0,ballz,0.0,1.0,0.0);
-  drawRoad(1000);
+  drawRoad(200);
   drawObstacleBlock(10);
   drawSphere();
   drawFood(10);
   feelCollision();
   point();
+  result();
   glFlush();
   glutTimerFunc(1500,moveBall,0);
     glutTimerFunc(2500,rotateFood,0);

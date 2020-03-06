@@ -1,7 +1,7 @@
-#define SPEED_1 0.099
-#define SPEED_2 0.15
-#define SPEED_3 0.20
-#define SPEED_4 0.30
+#define SPEED_1 0.1
+#define SPEED_2 0.3
+#define SPEED_3 0.4
+#define SPEED_4 0.5
 
 // Variables of game play
 int totalPoints =0;
