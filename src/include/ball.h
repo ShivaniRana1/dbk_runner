@@ -8,6 +8,11 @@
   #define FOOD_H
 #endif
 
+#ifndef OBSTACLE_H
+  #include"obstacles.h"
+  #define OBSTACLE_H
+#endif
+
 void moveBall()
 {
   ballz = ballz+0.0999;

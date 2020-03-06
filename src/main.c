@@ -6,8 +6,13 @@
   #define FOOD_H
 #endif
 
+#ifndef OBSTACLE_H
+  #include"obstacles.h"
+  #define OBSTACLE_H
+#endif
+
 #include"road.h"
-#include"obstacles.h"
+
 #include"ball.h"
 
 #define GL_SILENCE_DEPRECATION  1
@@ -62,7 +67,7 @@ void render()
 
   gluLookAt(0.0,3.0,camz,0.0,0.0,ballz,0.0,1.0,0.0);
   drawRoad(1000);
-  drawObstacleBlock();
+  drawObstacleBlock(10);
   drawSphere();
   drawFood(10);
   feelCollision();
@@ -102,8 +107,6 @@ if(ballx>1.0){
     }else{
       //
     }
-
-
 }
 
 int main(int argc, char** argv)

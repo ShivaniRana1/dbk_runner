@@ -7,8 +7,10 @@ float foodMat[200][2];
 int isInitialized =0;
 
 void initFood(){
+
     float zLocation;
     float xLocation;
+   
 
     for(int i =0; i < 200; i++){
         zLocation = rand() % roadLength;
@@ -45,10 +47,8 @@ void rotateFood(){
 void foodCollision(){
     for(int i =0; i < 20; i++){
         if((int)ballx == (int)foodMat[i][0] && (int)ballz == (int)foodMat[i][1]){
-            //printf("Collision at: (%f,%f)\n",ballx,ballz);
+            printf("Food collision at: (%f,%f)\n",ballx,ballz);
             totalPoints++;
         }
     }
-    //printf("Ball at: (%f,%f)",ballx,ballz);
-   // printf("\t| (%f,%f)\n",foodMat[10][0],foodMat[10][1]);
 }
