@@ -47,7 +47,7 @@ void rotateFood(){
 void foodCollision(){
     for(int i =0; i < 20; i++){
         if((int)ballx == (int)foodMat[i][0] && (int)ballz == (int)foodMat[i][1]){
-            printf("Food collision at: (%f,%f)\n",ballx,ballz);
+            //printf("Food collision at: (%f,%f)\n",ballx,ballz);
             totalPoints++;
         }
     }

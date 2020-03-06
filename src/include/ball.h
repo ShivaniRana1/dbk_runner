@@ -15,7 +15,18 @@
 
 void moveBall()
 {
-  ballz = ballz+0.0999;
+  float ballAcc; // Ball acceleration
+  if(ballz > roadLength*0.75){
+      ballAcc=SPEED_4;
+  }else if(ballz > roadLength*0.50){
+    ballAcc=SPEED_3;
+  }else if(ballz > roadLength* 0.25){
+    ballAcc=SPEED_2 ;
+  }else{
+    ballAcc =SPEED_1;
+  }
+  ballz = ballz + ballAcc;
+  //printf("Ballz: %f \t | \t Speed: %f\n",ballz,ballAcc);
 }
 
 void drawSphere()

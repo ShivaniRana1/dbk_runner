@@ -66,7 +66,7 @@ void render()
   gluPerspective(70.0f, ((GLdouble)_w/_h), 0.1f, 1000.0f);
 
   gluLookAt(0.0,3.0,camz,0.0,0.0,ballz,0.0,1.0,0.0);
-  drawRoad(1000);
+  drawRoad(500);
   drawObstacleBlock(10);
   drawSphere();
   drawFood(10);
